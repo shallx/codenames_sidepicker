@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Side Picker</title>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        textarea {
+            width: 300px;
+            height: 200px;
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+
+        button {
+            padding: 8px 16px;
+            font-size: 16px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #3e8e41;
+        }
+        .blue {
+            background-color: lightblue;
+            padding: 20px;
+        }
+        .red {
+            background-color: lightcoral;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <form @submit.prevent="assignSides">
+            <label for="names">Names:</label>
+            <textarea v-model="names" id="names"></textarea>
+            <button type="submit">Assign sides</button>
+        </form>
+        <br><br>
+        <div style="display: grid; grid-template-columns: 1fr 1fr;">
+            <div v-if="blues.length > 0"  class="blue">
+                <h1>Team Blue</h1>
+                <div v-for="(blue, index) in blues" :key="index">{{ blue }}</div>
+            </div>
+            <div v-if="reds.length > 0" class="red">
+                <h1>Team Red</h1>
+                <div v-for="(red, index) in reds" :key="index">{{ red }}</div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script type="module" src="app.js">
+
+    </script>
+
+</body>
+
+</html>
